@@ -24,4 +24,14 @@ btn.addEventListener('click', ()=>{
     document.body.append(p);
     document.body.append(student);
     student.textContent=obj.name+' '+obj.surname+' '+obj.patronymic+' '+obj.date+' '+obj.year+' '+obj.faculty;
-});
+    localStorage.setItem('students', JSON.stringify(mas));
+});   
+let mas1 = JSON.parse(localStorage.getItem('students'));
+for (const item of mas1) {
+    let student=document.createElement('div');
+    let p=document.createElement('p');
+    document.body.append(p);
+    document.body.append(student);
+    mas.push(item);
+    student.textContent=item.name+' '+item.surname+' '+item.patronymic+' '+item.date+' '+item.year+' '+item.faculty;
+}
