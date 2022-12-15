@@ -1,5 +1,5 @@
 //localStorage.clear();
-let date = new Date();
+
 let obj
 let mas=[];
 //Создание поля для вывода ошибки
@@ -8,16 +8,11 @@ document.body.append(error);
 error.className = 'error';
 error.textContent="";
 
-//создание кнопки 0
+//создание кнопки
 const btn=document.createElement('button');
 document.body.append(btn);
 btn.textContent='Добавить студента';
 btn.className = 'add';
-//создание кнопки 1
-const btn1 = document.createElement('button');
-document.body.append(btn1);
-btn1.textContent = 'Очистить хранилище';
-btn1.className = 'add';
 
 btn.addEventListener('click', ()=>{
 
@@ -29,9 +24,8 @@ btn.addEventListener('click', ()=>{
 
 	if (document.form.patronymic.value==' ')
     {error.textContent="Необходимо заполнить поле Отчество!";return false;}
-	let q = (document.form.date.valueAsDate.getFullYear() < 1900 || document.form.date.valueAsDate.getFullYear() > 2022 ||
-		(Number(document.form.date.valueAsDate.getFullYear()) === 2022 &&
-		Number(document.form.date.valueAsDate.getMonth()) === 11) && Number(document.form.date.valueAsDate.getDate()) > Number(date.getDate()));
+	let q=(document.form.date.valueAsDate.getFullYear() < 1900 || document.form.date.valueAsDate.getFullYear() > 2022 || (document.form.date.valueAsDate.getFullYear() == '2022' && document.form.date.valueAsDate.getMonth() == '12' &&  document.form.date.valueAsDate.getDate() > 10));
+	console.log(q);
 
     if (q)
 	{error.textContent="Необходимо правильно заполнить поле Дата рождения!";return false;}
@@ -53,8 +47,8 @@ btn.addEventListener('click', ()=>{
 	error.textContent="";
     mas.push(obj);
     console.log(mas);
-	let student = document.createElement('div');
-	let p = document.createElement('p');
+    let student=document.createElement('div');
+	let p=document.createElement('p');
 	document.body.append(p);
 	document.body.append(student);
     student.textContent=obj.name+' '+obj.surname+' '+obj.patronymic+' '+obj.data+' '+obj.year+' '+obj.faculty;
@@ -62,12 +56,9 @@ btn.addEventListener('click', ()=>{
 	document.form.name.value=' ';
 	document.form.surname.value=' ';
 	document.form.patronymic.value=' ';
-	document.form.date.value = null;
-	document.form.year.value=null;
+	document.form.date.value=' ';
+	document.form.year.value=' ';
 	document.form.faculty.value=' ';
-});
-btn1.addEventListener('click', () => {
-	localStorage.clear();
 });
 
 	let mas1=JSON.parse(localStorage.getItem('students'))

@@ -18,9 +18,9 @@
         <div><span>*</span>Дата рождения</div>
         <input type='date' name='date'>
         <div><span >*</span>Год начала обучения</div>
-        <input type='number' name='year'>
+        <input type='text' name='year'>
         <div ><span>*</span>Факультет</div>
-        <input type='text' name='faculty'>
+        <input type='string' name='faculty'>
 		<div name='error'></div>
     </form>
 </body>
